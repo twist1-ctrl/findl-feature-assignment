@@ -1,0 +1,63 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum FeatureStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  IN_PROGRESS
+  COMPLETED
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  name      String
+  avatar    String?
+  features  FeatureRequest[]
+  votes     Vote[]
+  reactions Reaction[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model FeatureRequest {
+  id        Int     @id @default(autoincrement())
+  title     String
+  description String
+  status    FeatureStatus @default(PENDING)
+  createdBy String
+  creator   User    @relation(fields: [createdBy], references: [id])
+  votes     Vote[]
+  reactions Reaction[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Vote {
+  id        Int     @id @default(autoincrement())
+  featureId Int
+  feature   FeatureRequest @relation(fields: [featureId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User    @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+
+  @@unique([featureId, userId])
+}
+
+model Reaction {
+  id        Int     @id @default(autoincrement())
+  text      String
+  featureId Int
+  feature   FeatureRequest @relation(fields: [featureId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User    @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

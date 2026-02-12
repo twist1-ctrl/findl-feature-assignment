@@ -31,7 +31,7 @@ const FeaturesPage: React.FC = () => {
   };
 
   return (
-    <div dir="rtl" className="bg-secondary min-h-screen flex flex-col">
+    <div dir="rtl" className="bg-gray-50 min-h-screen flex flex-col">
       <Header user={user} />
       <main className="w-full">
         <div className="w-6/12 mx-auto py-8 flex flex-col">

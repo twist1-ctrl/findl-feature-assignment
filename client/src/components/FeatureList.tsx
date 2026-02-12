@@ -18,7 +18,7 @@ interface Feature {
 
 const FeatureList: React.FC<{ features: any[]; setFeatures: (f: any[]) => void }> = ({ features }) => {
   return (
-    <div className="flex flex-col gap-4 w-full">
+    <div className="flex flex-col w-full">
       {features.map(feature => (
         <FeatureCard
           key={feature.id}

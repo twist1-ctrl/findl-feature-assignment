@@ -7,7 +7,39 @@ A feature request management system built with Node.js, Prisma, and PostgreSQL.
 This project prioritizes **server-side development first** to establish a robust backend with real data and proper database structure. This approach eliminates unnecessary mocking and ensures the client side works with actual, production-ready data from day one.
 
 ## Installation & Setup
+### Client Setup
 
+1. Go to the client folder:
+   ```bash
+   cd client
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Install TailwindCSS and Vite plugin:
+   ```bash
+   npm install tailwindcss @tailwindcss/vite postcss autoprefixer
+   ```
+
+4. Add Tailwind directives to src/index.css:
+   ```css
+   @tailwind base;
+   @tailwind components;
+   @tailwind utilities;
+   ```
+
+5. Start development server:
+   ```bash
+   npm run dev
+   ```
+
+6. Build for production:
+   ```bash
+   npm run build
+   ```
 ### Prerequisites
 - Node.js (v16 or higher)
 - PostgreSQL

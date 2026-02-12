@@ -1,0 +1,7 @@
+@import "tailwindcss";
+@import "tailwindcss";
+
+:root {
+  --color-secondary: oklch(0.96 0.01 255.82);
+  --color-secondary-foreground: oklch(0.25 0.01 255.82);
+}

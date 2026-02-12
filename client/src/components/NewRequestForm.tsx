@@ -1,16 +1,43 @@
 
 import React, { useState } from 'react';
+import axios from 'axios';
+import { useCurrentUser } from '../App';
 
 interface NewRequestFormProps {
     onClose: () => void;
+    onAddFeature?: (feature: any) => void;
 }
 
 const MAX_TITLE = 100;
 
-const NewRequestForm: React.FC<NewRequestFormProps> = ({ onClose }) => {
+const NewRequestForm: React.FC<NewRequestFormProps> = ({ onClose, onAddFeature }) => {
     const [title, setTitle] = useState("");
     const [desc, setDesc] = useState("");
-    const [solution, setSolution] = useState("");
+    const [loading, setLoading] = useState(false);
+    const { user } = useCurrentUser();
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!title.trim() || !desc.trim() || !user?.id) return;
+        setLoading(true);
+        try {
+            const res = await axios.post(`${import.meta.env.VITE_API_URL}/features`, {
+                title,
+                description: desc,
+                createdBy: user.id,
+            });
+            if (onAddFeature && res.data) {
+                onAddFeature(res.data);
+            }
+            setTitle("");
+            setDesc("");
+            onClose();
+        } catch (err) {
+            // Optionally show error
+        } finally {
+            setLoading(false);
+        }
+    };
 
     return (
         <div dir="rtl" className="w-full max-w-xl mx-auto">
@@ -18,7 +45,7 @@ const NewRequestForm: React.FC<NewRequestFormProps> = ({ onClose }) => {
                 <h2 className="text-2xl font-bold text-right mb-1">הגש בקשה לפיצ'ר חדש</h2>
                 <p className="text-gray-500 text-right text-sm mb-4">שתף את הרעיון שלך ועזור לנו לשפר את המוצר</p>
             </div>
-            <form className="space-y-4">
+            <form className="space-y-4" onSubmit={handleSubmit}>
                 <div>
                     <label className="block text-right text-gray-700 font-medium mb-1">
                         כותרת הבקשה <span className="text-red-500">*</span>
@@ -67,6 +94,7 @@ const NewRequestForm: React.FC<NewRequestFormProps> = ({ onClose }) => {
                         type="button"
                         onClick={onClose}
                         className="px-6 py-2 rounded-lg bg-white border border-gray-300 text-gray-700 font-medium hover:bg-gray-100 transition"
+                        disabled={loading}
                     >
                         ביטול
                     </button>
@@ -77,12 +105,11 @@ const NewRequestForm: React.FC<NewRequestFormProps> = ({ onClose }) => {
                         style={{
                             background: 'linear-gradient(90deg, #5B8CFF 0%, #A259FF 100%)'
                         }}
-                        disabled
+                        disabled={loading || !title.trim() || !desc.trim()}
                     >
                         <span className="text-lg">+</span>
-                        שלח בקשה
+                        {loading ? 'מגיש...' : 'שלח בקשה'}
                     </button>
-
                 </div>
             </form>
         </div>

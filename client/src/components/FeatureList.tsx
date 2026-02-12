@@ -16,26 +16,7 @@ interface Feature {
   reactions: { id: number }[];
 }
 
-const FeatureList: React.FC = () => {
-  const [features, setFeatures] = useState<Feature[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
-
-  useEffect(() => {
-    axios.get(`${import.meta.env.VITE_API_URL}/features`)
-      .then(res => {
-        setFeatures(res.data);
-        setLoading(false);
-      })
-      .catch(() => {
-        setError("Failed to load features");
-        setLoading(false);
-      });
-  }, []);
-
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div className="text-red-500">{error}</div>;
-
+const FeatureList: React.FC<{ features: any[]; setFeatures: (f: any[]) => void }> = ({ features }) => {
   return (
     <div className="flex flex-col gap-4 w-full">
       {features.map(feature => (

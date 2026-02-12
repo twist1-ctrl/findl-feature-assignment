@@ -3,6 +3,8 @@
     "@types/node": "^25.2.3"
   },
   "dependencies": {
+    "@headlessui/react": "^2.2.9",
+    "@tanstack/react-query": "^5.90.21",
     "class-validator": "^0.14.3"
   }
 }

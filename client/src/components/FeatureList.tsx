@@ -37,7 +37,7 @@ const FeatureList: React.FC = () => {
   if (error) return <div className="text-red-500">{error}</div>;
 
   return (
-    <div className="flex flex-col gap-4 w-full max-w-2xl mx-auto">
+    <div className="flex flex-col gap-4 w-full">
       {features.map(feature => (
         <FeatureCard
           key={feature.id}

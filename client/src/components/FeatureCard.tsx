@@ -1,4 +1,6 @@
+
 import React from "react";
+import FeatureDetails from "./FeatureDetails";
 
 interface FeatureCardProps {
   title: string;
@@ -21,8 +23,6 @@ const statusColors: Record<string, string> = {
   IN_PROGRESS: "bg-blue-100 text-blue-800",
   COMPLETED: "bg-gray-100 text-gray-800",
 };
-
-
 import { useState } from "react";
 function timeAgo(dateString: string) {
   const date = new Date(dateString);
@@ -83,15 +83,24 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
           <span>{reactions.length} comments</span>
         </div>
         {open && (
-          <div className="mt-4">
-            <button
-              className="px-3 py-1 rounded bg-blue-600 text-white text-xs font-semibold hover:bg-blue-700 transition"
-              onClick={e => { e.stopPropagation(); /* TODO: handle vote */ }}
-            >
-              Vote ({votes.length})
-            </button>
-            {/* TODO: Render comments/reactions here */}
-          </div>
+          <>
+            <div className="mt-4">
+              <button
+                className="px-3 py-1 rounded bg-blue-600 text-white text-xs font-semibold hover:bg-blue-700 transition"
+                onClick={e => { e.stopPropagation(); /* TODO: handle vote */ }}
+              >
+                Vote ({votes.length})
+              </button>
+            </div>
+            <FeatureDetails
+              description={description}
+              status={status}
+              createdAt={createdAt}
+              creator={creator}
+              votes={votes}
+              reactions={reactions}
+            />
+          </>
         )}
       </div>
       {/* Side color bar for open state */}

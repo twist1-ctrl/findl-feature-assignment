@@ -1,10 +1,16 @@
+
 import Header from "../components/Header";
-import React from "react";
+import React, { useState } from "react";
 import FeatureList from "../components/FeatureList";
 import { useCurrentUser } from "../App";
+import Modal from "../components/Modal";
+import NewRequestForm from "../components/NewRequestForm";
+
 
 const FeaturesPage: React.FC = () => {
   const { user, isLoading, isError } = useCurrentUser();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <div dir="rtl" className="bg-secondary min-h-screen flex flex-col">
       <Header user={user} />
@@ -15,7 +21,10 @@ const FeaturesPage: React.FC = () => {
               <h1 className="text-2xl font-bold">בקשות פיצ'רים</h1>
               <p className="text-gray-700 mt-1">נהל והצבע על בקשות פיצ'רים...</p>
             </div>
-            <button className="px-6 py-2 rounded bg-blue-600 text-white font-semibold hover:bg-blue-700 transition flex items-center gap-2">
+            <button
+              className="px-6 py-2 rounded bg-blue-600 text-white font-semibold hover:bg-blue-700 transition flex items-center gap-2"
+              onClick={() => setIsModalOpen(true)}
+            >
               <span>+</span>
               בקשה חדשה
             </button>
@@ -24,6 +33,9 @@ const FeaturesPage: React.FC = () => {
             <FeatureList />
           </div>
         </div>
+        <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+          <NewRequestForm onClose={() => setIsModalOpen(false)} />
+        </Modal>
       </main>
     </div>
   );

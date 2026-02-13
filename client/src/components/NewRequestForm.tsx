@@ -40,7 +40,7 @@ const NewRequestForm: React.FC<NewRequestFormProps> = ({ onClose, onAddFeature }
     };
 
     return (
-        <div dir="rtl" className="w-full max-w-xl mx-auto">
+        <div className="w-full max-w-xl mx-auto">
             <div className="flex flex-col items-start mb-2">
                 <h2 className="text-2xl font-bold text-right mb-1">הגש בקשה לפיצ'ר חדש</h2>
                 <p className="text-gray-500 text-right text-sm mb-4">שתף את הרעיון שלך ועזור לנו לשפר את המוצר</p>
@@ -89,7 +89,7 @@ const NewRequestForm: React.FC<NewRequestFormProps> = ({ onClose, onAddFeature }
                         <li>בדוק שאין כבר בקשה דומה קיימת</li>
                     </ul>
                 </div>
-                <div className="flex justify-end items-center mt-6 gap-2 flex-row">
+                <div className="flex justify-start items-center mt-6 gap-2 flex-row">
                     <button
                         type="button"
                         onClick={onClose}

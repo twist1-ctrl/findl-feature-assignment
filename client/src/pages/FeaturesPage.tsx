@@ -38,10 +38,10 @@ const FeaturesPage: React.FC = () => {
           <div className="w-full flex items-center justify-between mb-6">
             <div>
               <h1 className="text-2xl font-bold">בקשות פיצ'רים</h1>
-              <p className="text-gray-700 mt-1">נהל והצבע על בקשות פיצ'רים...</p>
+              <p className="text-gray-700 mt-1">נהל והצבע על בקשות לפיצ'רים חדשים</p>
             </div>
             <button
-              className="px-6 py-2 rounded bg-blue-600 text-white font-semibold hover:bg-blue-700 transition flex items-center gap-2"
+              className="px-6 py-2 rounded font-semibold transition flex items-center gap-2 text-white bg-gradient-to-r from-[#6366F1] to-[#8B5CF6] hover:brightness-105"
               onClick={() => setIsModalOpen(true)}
             >
               <span>+</span>

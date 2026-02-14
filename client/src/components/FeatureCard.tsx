@@ -124,10 +124,10 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
             {/* Vote button and supporters - flex row, RTL order: button right, count left */}
             <div className="flex flex-row items-center gap-2 bg-gray-50 rounded-2xl px-6 py-3 w-full justify-start" style={{ borderRadius: 10 }}>
               <button
-                className={`flex items-center gap-2 px-6 py-2 rounded-lg font-bold text-lg shadow transition disabled:opacity-60 ${localVotes.some(v => v.userId === user?.id)
+                className={`flex items-center gap-2 px-6 py-2 rounded-lg font-bold text-lg shadow transition ${localVotes.some(v => v.userId === user?.id)
                   ? 'text-white' : 'bg-gradient-to-r from-[#6366F1] to-[#8B5CF6] text-white hover:brightness-105'}`}
                 style={localVotes.some(v => v.userId === user?.id)
-                  ? { background: 'linear-gradient(90deg, #059669 0%, #047857 100%)' }
+                  ? { background: 'linear-gradient(90deg, #059669 0%, #047857 100%)', opacity: 1 }
                   : {}}
                 disabled={voteLoading || !user || user.id === creator.id || localVotes.some(v => v.userId === user.id)}
                 onClick={async (e) => {
@@ -168,12 +168,12 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
             {voteError && <div className="text-red-500 text-sm mt-2">{voteError}</div>}
             {/* Info bar - grid of 3 cards, all right-aligned */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-1 mt-2 w-full">
-              {/* תגובות */}
+              {/* יוצר */}
               <div className="flex items-center bg-gray-50 rounded-2xl px-6 py-4 min-h-[64px] w-full text-right justify-start">
-                <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="ml-2 text-gray-400"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8h2a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2v-8a2 2 0 012-2h2m10-4H7a2 2 0 00-2 2v0a2 2 0 002 2h10a2 2 0 002-2v0a2 2 0 00-2-2z" /></svg>
+                <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="ml-2 text-gray-400"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none"/><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 12v2m0-6v2" /></svg>
                 <div className="flex flex-col items-start w-full text-right">
-                  <span className="text-xs text-gray-400">תגובות</span>
-                  <span className="font-bold text-base text-gray-700">{reactions.length}</span>
+                  <span className="text-xs text-gray-400">נוצר ע"י</span>
+                  <span className="font-bold text-base text-gray-700">{creator.name}</span>
                 </div>
               </div>
               {/* תאריך */}
@@ -184,12 +184,12 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
                   <span className="font-bold text-base text-gray-700">{new Date(createdAt).toLocaleDateString('he-IL', { day: 'numeric', month: 'long' })}</span>
                 </div>
               </div>
-              {/* יוצר */}
+              {/* תגובות */}
               <div className="flex items-center bg-gray-50 rounded-2xl px-6 py-4 min-h-[64px] w-full text-right justify-start">
-                <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="ml-2 text-gray-400"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none"/><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 12v2m0-6v2" /></svg>
+                <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="ml-2 text-gray-400"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8h2a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2v-8a2 2 0 012-2h2m10-4H7a2 2 0 00-2 2v0a2 2 0 002 2h10a2 2 0 002-2v0a2 2 0 00-2-2z" /></svg>
                 <div className="flex flex-col items-start w-full text-right">
-                  <span className="text-xs text-gray-400">נוצר ע"י</span>
-                  <span className="font-bold text-base text-gray-700">{creator.name}</span>
+                  <span className="text-xs text-gray-400">תגובות</span>
+                  <span className="font-bold text-base text-gray-700">{reactions.length}</span>
                 </div>
               </div>
             </div>

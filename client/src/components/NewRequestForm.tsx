@@ -75,18 +75,32 @@ const NewRequestForm: React.FC<NewRequestFormProps> = ({ onClose, onAddFeature }
                         תאר את הבעיה שאתה מנסה לפתור והפתרון המוצע
                     </div>
                 </div>
-                <div className="bg-gray-50 rounded-lg p-4 mt-8 border border-gray-100">
+                                <div
+                                    className="rounded-lg p-4 mt-8 border border-gray-100"
+                                    style={{
+                                        background: 'linear-gradient(90deg, #F4F6FB 0%, #E6E9F5 100%)'
+                                    }}
+                                >
                     <div className="flex items-center mb-2">
-                        <svg className="w-5 h-5 text-blue-400 ml-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                            <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" />
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M12 16h.01M12 8a2 2 0 0 1 2 2c0 1-2 1-2 3" />
+                        <svg className="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10" stroke="#4367e9" strokeWidth="2" fill="none" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 16h.01M12 8a2 2 0 0 1 2 2c0 1-2 1-2 3" stroke="#4367e9" />
                         </svg>
-                        <span className="font-semibold text-blue-500">טיפים לבקשה טובה</span>
+                        <span className="font-semibold" style={{ color: '#4367e9' }}>טיפים לבקשה טובה</span>
                     </div>
-                    <ul className="list-disc pr-5 text-sm text-gray-600 space-y-1">
-                        <li>תאר את הבקשה לפי התוצאה - למה אתה צריך את זה?</li>
-                        <li>הימנע מתיאורים טכניים של הפתרון בלבד</li>
-                        <li>בדוק שאין כבר בקשה דומה קיימת</li>
+                    <ul className="pr-5 text-sm text-gray-600 space-y-1" style={{ listStyle: 'none', paddingRight: '1.25rem' }}>
+                        <li style={{ display: 'flex', alignItems: 'flex-start' }}>
+                            <span style={{ color: '#4367e9', fontSize: '1.2em', lineHeight: '1', marginLeft: 8, marginTop: 2 }}>&bull;</span>
+                            <span>תאר את הבקשה לפי התוצאה - למה אתה צריך את זה?</span>
+                        </li>
+                        <li style={{ display: 'flex', alignItems: 'flex-start' }}>
+                            <span style={{ color: '#4367e9', fontSize: '1.2em', lineHeight: '1', marginLeft: 8, marginTop: 2 }}>&bull;</span>
+                            <span>הימנע מתיאורים טכניים של הפתרון בלבד</span>
+                        </li>
+                        <li style={{ display: 'flex', alignItems: 'flex-start' }}>
+                            <span style={{ color: '#4367e9', fontSize: '1.2em', lineHeight: '1', marginLeft: 8, marginTop: 2 }}>&bull;</span>
+                            <span>בדוק שאין כבר בקשה דומה קיימת</span>
+                        </li>
                     </ul>
                 </div>
                 <div className="flex justify-start items-center mt-6 gap-2 flex-row">

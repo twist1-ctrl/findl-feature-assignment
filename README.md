@@ -48,5 +48,5 @@ npm run dev
 - `POST /votes` – vote on a feature
 
 ## Deploy
-- Backend URL: <add backend URL>
-- Frontend URL: <add frontend URL>
+- Backend URL: https://findl-feature-assignment.onrender.com
+- Frontend URL: https://findlyproject.netlify.app

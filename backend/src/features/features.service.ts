@@ -22,8 +22,17 @@ export class FeaturesService {
     });
   }
 
-  async findAll() {
+  async findAll(search?: string) {
+    const where = search
+      ? {
+          OR: [
+            { title: { contains: search, mode: 'insensitive' } },
+            { description: { contains: search, mode: 'insensitive' } },
+          ],
+        }
+      : undefined;
     return this.prisma.featureRequest.findMany({
+      where,
       include: {
         creator: true,
         votes: true,

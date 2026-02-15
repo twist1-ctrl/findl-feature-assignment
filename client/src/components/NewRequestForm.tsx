@@ -103,7 +103,7 @@ const NewRequestForm: React.FC<NewRequestFormProps> = ({ onClose, onAddFeature }
                         </li>
                     </ul>
                 </div>
-                <div className="flex justify-start items-center mt-6 gap-2 flex-row">
+                <div className="flex justify-end items-center mt-6 gap-2 flex-row">
                     <button
                         type="button"
                         onClick={onClose}

@@ -1,7 +1,1 @@
-export default {
-  datasources: {
-    db: {
-      url: process.env.DATABASE_URL,
-    },
-  },
-};
+// Disabled for local Prisma CLI; use --schema instead.

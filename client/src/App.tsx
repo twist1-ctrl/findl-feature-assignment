@@ -1,6 +1,6 @@
 import FeaturesPage from "./pages/FeaturesPage";
 
-import { QueryClient, useQuery, useQueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import React, { createContext, useContext } from 'react';
 

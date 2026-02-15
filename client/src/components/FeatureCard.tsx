@@ -1,6 +1,5 @@
 
 import React from "react";
-import FeatureDetails from "./FeatureDetails";
 
 interface FeatureCardProps {
   featureId: number;
@@ -15,17 +14,8 @@ interface FeatureCardProps {
   };
   votes: { id: number, userId?: string }[];
   reactions: { id: number }[];
-  className?: string;
   onVoteSuccess?: (featureId: number, vote: { id: number, userId?: string }) => void;
 }
-
-const statusColors: Record<string, string> = {
-  PENDING: "bg-yellow-100 text-yellow-800",
-  APPROVED: "bg-green-100 text-green-800",
-  REJECTED: "bg-red-100 text-red-800",
-  IN_PROGRESS: "bg-blue-100 text-blue-800",
-  COMPLETED: "bg-gray-100 text-gray-800",
-};
 import { useState } from "react";
 import axios from "axios";
 import { useCurrentUser } from "../App";
@@ -43,12 +33,10 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
   featureId,
   title,
   description,
-  status,
   createdAt,
   creator,
   votes,
   reactions,
-  className = "",
   onVoteSuccess,
 }) => {
   const [open, setOpen] = useState(false);

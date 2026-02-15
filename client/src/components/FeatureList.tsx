@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import FeatureCard from "./FeatureCard";
-import axios from "axios";
 
 interface Feature {
   id: number;

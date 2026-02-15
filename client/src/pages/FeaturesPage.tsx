@@ -9,7 +9,7 @@ import NewRequestForm from "../components/NewRequestForm";
 
 
 const FeaturesPage: React.FC = () => {
-  const { user, isLoading, isError } = useCurrentUser();
+  const { user } = useCurrentUser();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [features, setFeatures] = useState<any[]>([]);
   const [featuresLoaded, setFeaturesLoaded] = useState(false);

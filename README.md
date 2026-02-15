@@ -7,6 +7,40 @@ A feature request management system built with Node.js, Prisma, and PostgreSQL.
 This project prioritizes **server-side development first** to establish a robust backend with real data and proper database structure. This approach eliminates unnecessary mocking and ensures the client side works with actual, production-ready data from day one.
 
 ## Installation & Setup
+### Docker (Recommended)
+
+1. Start the database:
+   ```bash
+   docker compose up -d db
+   ```
+
+2. Run initial Prisma migration (creates tables):
+   ```bash
+   cd backend
+   DATABASE_URL="postgresql://postgres:postgres@localhost:5432/findl_db" npx prisma migrate dev --name init --schema ./prisma/schema.prisma
+   cd ..
+   ```
+
+3. Build and start all services:
+   ```bash
+   docker compose up --build
+   ```
+
+4. Open the app in your browser:
+   ```
+   http://localhost:8080
+   ```
+
+5. API is available at:
+   ```
+   http://localhost:3000
+   ```
+
+6. Stop services:
+   ```bash
+   docker compose down
+   ```
+
 ### Client Setup
 
 1. Go to the client folder:
